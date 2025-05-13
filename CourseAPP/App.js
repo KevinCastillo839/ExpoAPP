@@ -3,30 +3,29 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Courses from './Components/Courses';  // Asegúrate de que la ruta sea correcta
- // Asegúrate de que la ruta sea correcta
+import Courses from './Components/Courses'; // Make sure the path is correct
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      {/* Set initial route to "Courses" */}
+      <Stack.Navigator initialRouteName="Courses">
         <Stack.Screen name="Home">
           {(props) => (
             <View style={styles.container}>
               <Text>Open up App.js to start working on your app!</Text>
               <TouchableOpacity onPress={() => props.navigation.navigate('Courses')}>
-                <Text>Ir a Cursos</Text>
+                <Text>Go to Courses</Text>
               </TouchableOpacity>
               <StatusBar style="auto" />
             </View>
           )}
         </Stack.Screen>
 
-        {/* Rutas para los diferentes componentes */}
+        {/* Routes for the different components */}
         <Stack.Screen name="Courses" component={Courses} options={{ headerShown: false }} />
-
       </Stack.Navigator>
     </NavigationContainer>
   );
