@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { TextInput, Button, Alert } from 'react-native';
+import { View, Text, TextInput, Alert, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import config from './ConfigIp';
 import { useNavigation } from '@react-navigation/native';
+import styles from './Styles/AddCourseStyles';
 
 const AddCourse = () => {
   const [newCourseName, setNewCourseName] = useState('');
@@ -29,43 +30,29 @@ const AddCourse = () => {
     }
   };
 
-  return (
-    <>
+   return (
+    <View style={styles.container}>
       <TextInput
-        style={{
-          height: 40,
-          borderColor: 'gray',
-          borderWidth: 1,
-          marginBottom: 10,
-          paddingLeft: 8,
-          borderRadius: 5,
-        }}
+        style={styles.input}
         placeholder="Nombre del curso"
         value={newCourseName}
         onChangeText={setNewCourseName}
       />
 
       <TextInput
-        style={{
-          height: 80,
-          borderColor: 'gray',
-          borderWidth: 1,
-          marginBottom: 10,
-          paddingLeft: 8,
-          borderRadius: 5,
-        }}
+        style={[styles.input, styles.textArea]}
         placeholder="Descripción del curso"
         value={newCourseDescription}
         onChangeText={setNewCourseDescription}
         multiline
       />
 
-      <Button
-        title="Agregar Curso"
-        onPress={addCourse}
-      />
-    </>
+      <TouchableOpacity style={styles.buttonContainer} onPress={addCourse}>
+        <Text style={styles.buttonText}>Agregar Curso</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
+
 
 export default AddCourse;
