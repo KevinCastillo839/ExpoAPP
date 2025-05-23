@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { TextInput, Button, Alert } from 'react-native';
+import { View, TextInput, Button, Alert } from 'react-native';
 import axios from 'axios';
 import config from './ConfigIp';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import styles from './Styles/EditCourseStyles';
 
 const EditCourse = () => {
   const navigation = useNavigation();
   const route = useRoute();
-  const { courseId } = route.params;  // Recibir el courseId desde navigation params
+  const { courseId } = route.params;
 
   const [newCourseName, setNewCourseName] = useState('');
   const [newCourseDescription, setNewCourseDescription] = useState('');
 
-  // Obtener los datos actuales del curso
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await axios.get(${config.apiUrl}/courses/${courseId});
+        const response = await axios.get(`${config.apiUrl}/courses/${courseId}`);
         const course = response.data;
         setNewCourseName(course.courseName || '');
         setNewCourseDescription(course.description || '');
@@ -40,50 +40,33 @@ const EditCourse = () => {
     };
 
     try {
-      await axios.put(${config.apiUrl}/courses/${courseId}, updatedCourse);
+      await axios.put(`${config.apiUrl}/courses/${courseId}`, updatedCourse);
       console.log('Curso actualizado exitosamente');
-      navigation.goBack();  // Volver atrás después de editar
+      navigation.goBack();
     } catch (error) {
       console.error('Error al actualizar el curso:', error);
     }
   };
 
   return (
-    <>
+    <View style={styles.container}>
       <TextInput
-        style={{
-          height: 40,
-          borderColor: 'gray',
-          borderWidth: 1,
-          marginBottom: 10,
-          paddingLeft: 8,
-          borderRadius: 5,
-        }}
+        style={styles.input}
         placeholder="Nombre del curso"
         value={newCourseName}
         onChangeText={setNewCourseName}
       />
 
       <TextInput
-        style={{
-          height: 80,
-          borderColor: 'gray',
-          borderWidth: 1,
-          marginBottom: 10,
-          paddingLeft: 8,
-          borderRadius: 5,
-        }}
+        style={[styles.input, styles.textArea]}
         placeholder="Descripción del curso"
         value={newCourseDescription}
         onChangeText={setNewCourseDescription}
         multiline
       />
 
-      <Button
-        title="Actualizar Curso"
-        onPress={editCourse}
-      />
-    </>
+      <Button title="Actualizar Curso" onPress={editCourse} />
+    </View>
   );
 };
 
