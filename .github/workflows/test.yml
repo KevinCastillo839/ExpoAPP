@@ -22,19 +22,22 @@ jobs:
       - name: Cache node_modules
         uses: actions/cache@v3
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          path: CourseAPP/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('CourseAPP/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
       - name: Install dependencies
+        working-directory: CourseAPP
         run: npm install
 
       - name: Show versions
+        working-directory: CourseAPP
         run: |
           node -v
           npm -v
           npx jest --version
 
       - name: Run tests verbosely
+        working-directory: CourseAPP
         run: npx jest --verbose --runInBand
