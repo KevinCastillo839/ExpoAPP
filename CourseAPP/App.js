@@ -28,9 +28,8 @@ export default function App() {
 
         {/* Routes for the different components */}
         <Stack.Screen name="Courses" component={Courses} options={{ headerShown: false }} />
-        <Stack.Screen name="AddCourse" component={AddCourse} options={{ title: 'Agregar Curso' }}
+        <Stack.Screen name="AddCourse" component={AddCourse} options={{ title: 'Agregar Curso' }} />
         <Stack.Screen name="EditCourse" component={EditCourse} options={{ title: 'Editar Curso' }} />
-        />
       </Stack.Navigator>
     </NavigationContainer>
   );
