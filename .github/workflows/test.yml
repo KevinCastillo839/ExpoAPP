@@ -17,7 +17,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Cache node_modules
         uses: actions/cache@v3
@@ -30,5 +30,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm test
+      - name: Show versions
+        run: |
+          node -v
+          npm -v
+          npx jest --version
+
+      - name: Run tests verbosely
+        run: npx jest --verbose --runInBand
