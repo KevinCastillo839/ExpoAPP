@@ -2,19 +2,22 @@ import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import AddCourse from '../Components/AddCourse';
 import axios from 'axios';
+import { goBackMock } from '@react-navigation/native';
+
 
 // Mocks
 jest.mock('axios');
 
-const goBackMock = jest.fn();
-
 jest.mock('@react-navigation/native', () => {
+  const goBackMock = jest.fn(); // Declarado dentro
   return {
     useNavigation: () => ({
       goBack: goBackMock,
     }),
+    goBackMock, // lo exportas si lo necesitas
   };
 });
+
 
 describe('AddCourse', () => {
   beforeEach(() => {
@@ -38,7 +41,7 @@ describe('AddCourse', () => {
           description: 'Descripción de prueba',
         }
       );
-      expect(goBackMock).toHaveBeenCalled();
+      expect(goBackMock).toHaveBeenCalled(); // ✅ ahora sí debería pasar
     });
   });
 });
