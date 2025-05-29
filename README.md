@@ -1,5 +1,5 @@
 Requisitos previos para ejecutar la aplicación
-
+Primero clonar el repositorio https://github.com/KevinCastillo839/ExpoAPP.git
 Antes de ejecutar la aplicación, asegúrate de cumplir con los siguientes pasos:
 
 📱 Frontend (Expo - React Native)
