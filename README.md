@@ -46,3 +46,6 @@ Si estás ejecutando el frontend en un dispositivo físico, debes modificar la I
 // En el frontend
 const  apiUrl: 'http://192.168.100.158:8080' // Reemplaza con la IP de tu máquina
 
+Link del video: https://www.youtube.com/watch?v=WxjaZxKPq64
+
+
