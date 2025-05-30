@@ -46,6 +46,12 @@ Si estás ejecutando el frontend en un dispositivo físico, debes modificar la I
 // En el frontend
 const  apiUrl: 'http://192.168.100.158:8080' // Reemplaza con la IP de tu máquina
 
+Para ejecutar las pruebas utilizar el comando:
+Npm test
+O el comando
+Npx jest
+
+
 Link del video: https://www.youtube.com/watch?v=WxjaZxKPq64
 
 
