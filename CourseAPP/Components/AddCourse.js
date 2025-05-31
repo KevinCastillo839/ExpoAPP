@@ -24,7 +24,7 @@ const AddCourse = () => {
     try {
       await axios.post(`${config.apiUrl}/courses`, newCourse);
       console.log('Curso agregado exitosamente.');
-      navigation.goBack(); // 👈 Regresar a la pantalla anterior
+      navigation.goBack();
     } catch (error) {
       console.error('Error al agregar el curso:', error);
     }

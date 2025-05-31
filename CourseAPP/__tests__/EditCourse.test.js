@@ -5,13 +5,13 @@ import axios from 'axios';
 import { Alert } from 'react-native';
 
 
-// Mock de axios
+// Axios mock
 jest.mock('axios');
 
-// Se define dentro del jest.mock
+// Defined inside jest.mock
 let mockGoBack;
 
-// Mock de useNavigation y useRoute de react-navigation/native
+// Mock  useNavigation and useRoute  react-navigation/native
 jest.mock('@react-navigation/native', () => ({
   useNavigation: () => ({
     goBack: mockGoBack,
@@ -25,7 +25,7 @@ jest.mock('@react-navigation/native', () => ({
 
 describe('EditCourse', () => {
   beforeEach(() => {
-    mockGoBack = jest.fn(); // Reinicializa en cada test
+    mockGoBack = jest.fn(); 
     axios.get.mockResolvedValue({
       data: {
         courseName: 'Curso Inicial',

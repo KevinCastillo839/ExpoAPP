@@ -9,13 +9,13 @@ app.use(express.json());
 app.use(cors());
 
 const db = mysql.createConnection({
-    host: "localhost",   // Asegúrate de que tu base de datos está en localhost
-    user: "root",        // Tu usuario de la base de datos
-    password: "",        // Tu contraseña de la base de datos (si tiene)
-    database: "coursedb" // Nombre de la base de datos
+    host: "localhost",   
+    user: "root",        
+    password: "",       
+    database: "coursedb" 
 });
 
-// Verificar conexión
+// Connect to the database
 db.connect((err) => {
     if (err) {
         console.error("Error de conexión a la base de datos: " + err.stack);
@@ -84,7 +84,7 @@ app.delete("/courses/:id", (req, res) => {
     });
 });
 
-const PORT = 8080; // HARDCODEA EL PUERTO
+const PORT = 8080; // HARDCODED PORT
 
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);

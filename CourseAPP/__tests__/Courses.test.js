@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import axios from 'axios';
 import Courses from '../Components/Courses';
 
-// Mock axios para controlar las respuestas
+// Mocks
 jest.mock('axios');
 
 describe('Courses CRUD tests', () => {
@@ -15,7 +15,7 @@ describe('Courses CRUD tests', () => {
   ];
 
   beforeEach(() => {
-    // Limpia mocks antes de cada test
+    // Reset mocks before each test
     jest.clearAllMocks();
   });
 
@@ -28,10 +28,9 @@ describe('Courses CRUD tests', () => {
       </NavigationContainer>
     );
 
-    // Espera que muestre el texto de carga
     expect(getByText('Cargando cursos...')).toBeTruthy();
 
-    // Espera que carguen los cursos
+    
     await waitFor(() => {
       expect(getByText('Curso 1')).toBeTruthy();
       expect(getByText('Descripción 1')).toBeTruthy();
@@ -50,17 +49,17 @@ test('should delete a course', async () => {
     </NavigationContainer>
   );
 
-  // Espera que carguen los cursos
+ 
   await waitFor(() => {
     expect(getByText('Curso 1')).toBeTruthy();
     expect(getByText('Curso 2')).toBeTruthy();
   });
 
-  // Obtener todos los botones "Eliminar" y presionar el primero
+  
   const deleteButtons = getAllByText('Eliminar');
   fireEvent.press(deleteButtons[0]);
 
-  // Espera que el curso 1 desaparezca
+  
   await waitFor(() => {
     expect(queryByText('Curso 1')).toBeNull();
     expect(getByText('Curso 2')).toBeTruthy();

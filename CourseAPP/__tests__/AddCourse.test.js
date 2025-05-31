@@ -9,12 +9,13 @@ import { goBackMock } from '@react-navigation/native';
 jest.mock('axios');
 
 jest.mock('@react-navigation/native', () => {
-  const goBackMock = jest.fn(); // Declarado dentro
+  const goBackMock = jest.fn(); // Declared inside jest.mock
+  // Mock useNavigation hook to return the goBack function
   return {
     useNavigation: () => ({
       goBack: goBackMock,
     }),
-    goBackMock, // lo exportas si lo necesitas
+    goBackMock, // export the mock function for testing
   };
 });
 
@@ -41,7 +42,7 @@ describe('AddCourse', () => {
           description: 'Descripción de prueba',
         }
       );
-      expect(goBackMock).toHaveBeenCalled(); // ✅ ahora sí debería pasar
+      expect(goBackMock).toHaveBeenCalled(); 
     });
   });
 });
